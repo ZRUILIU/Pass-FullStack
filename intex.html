@@ -14,16 +14,15 @@
   </head>
 
   <body>
+    <div class="container">
       <header class="header">
-
         <div class="logo">
-          <img src="logo.png" height="68" width="68" />
+          <img src="logo.png" alt="Today I Learned Logo" />
           <h1>Today I Learned!</h1>
         </div>
-        <button>Share a fact</button>
+        <button class="btn btn-large btn-open">Share a fact</button>
       </header>
-
-      <form class="fact-form">
+      <form class="fact-form hidden">
         <input type="text" placeholder="Share a fact with the world..." />
         <span>200</span>
         <input type="text" placeholder="Trustworthy source..." />
@@ -33,15 +32,26 @@
           <option value="Science">Science</option>
           <option value="Finace">Finace</option>
         </select>
-        <button>Post</button>
+        <button class="btn btn-large">Post</button>
       </form>
 
-      <main>
+      <main class="main">
         <aside>
           <ul>
-            <li><button>All</button></li>
-            <li><button>Techology</button></li>
-            <li><button>Science</button></li>
+            <li class="category">
+              <button class="btn btn-all-category">All</button>
+            </li>
+            <li class="category">
+              <button
+                class="btn btn-category"
+                style="background-color: #3b82f6"
+              >
+                Techology
+              </button>
+            </li>
+            <li class="category">
+              <button class="btn btn-category">Science</button>
+            </li>
           </ul>
         </aside>
         <section>
@@ -49,10 +59,16 @@
             <li class="fact">
               <p>
                 React is being developed by Meta (formerly facebook)
-                <a href="https://opensource.fb.com/" target="_blank">(Source)</a
-                ><span class="tag" style="background-color: #3b82f6;">#technology#</span>
+                <a
+                  class="source"
+                  href="https://opensource.fb.com/"
+                  target="_blank"
+                  >(Source)</a
+                ><span class="tag" style="background-color: #3b82f6"
+                  >#technology#</span
+                >
               </p>
-              <div>
+              <div class="vote-button">
                 <button>👍</button>
                 <button>🤯</button>
                 <button>⛔️</button>
@@ -64,12 +80,15 @@
                 their fathers spent with them. In 1982, 43% of fathers had never
                 changed a diaper. Today, that number is down to 3%
                 <a
+                  class="source"
                   href="https://www.mother.ly/parenting/millennial-dads-spend-more-time-with-their-kids"
                   target="_blank"
                   >(Source)</a
-                ><span class="tag" style="background-color: #eab308;">#society#</span>
+                ><span class="tag" style="background-color: #eab308"
+                  >#society#</span
+                >
               </p>
-              <div>
+              <div class="vote-button">
                 <button>👍</button>
                 <button>🤯</button>
                 <button>⛔️</button>
@@ -79,5 +98,6 @@
         </section>
       </main>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>
