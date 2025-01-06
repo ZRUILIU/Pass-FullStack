@@ -48,7 +48,7 @@ h1 {
   padding: 16px 0 13px;
   border-radius: 30px;
   cursor: pointer;
-  background-image: linear-gradient(150deg, #3b82f6, #ef4444, #eab308);
+  /* background-image: linear-gradient(150deg, #3b82f6, #ef4444, #eab308); */
   color: inherit;
   transform: 0.3s;
 }
@@ -61,6 +61,7 @@ h1 {
 .btn-large {
   font-size: 30px;
   padding: 20px 30px 17px;
+  background-image: linear-gradient(150deg, #3b82f6, #ef4444, #eab308);
 }
 
 .category {
@@ -74,14 +75,15 @@ h1 {
 .btn-all-category {
   width: 100%;
   margin-bottom: 16px;
+  background-image: linear-gradient(150deg, #3b82f6, #ef4444, #eab308);
 }
 
 .fact {
   font-size: 20px;
   line-height: 1.4;
   font-family: "Sono", sans-serif;
-  color: #fafaf9;
-  background-color: #71717a;
+  color: #ffffff;
+  background-color: #3e3e3e;
   margin-bottom: 16px;
   padding: 16px 24px;
   display: flex;
@@ -92,12 +94,13 @@ h1 {
 }
 
 .fact-form {
-  background-color: #71717a;
+  background-color: #6d6d6d;
   margin-bottom: 40px;
   padding: 16px 24px;
   align-items: center;
   display: flex;
   gap: 16px;
+  color: #ffffff;
   border-radius: 16px;
 }
 

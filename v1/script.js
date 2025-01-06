@@ -70,15 +70,15 @@ function createFactsList(dataArray) {
                     target="_blank"
                     >(Source)
                   </a>
-                    <span class="tag" style="background-color:${
-                      CATEGORIES.find((cat) => cat.name === fact.category).color
-                    }"
-                    </span>
+                  <span class="tag" style="background-color:${
+                    CATEGORIES.find((cat) => cat.name === fact.category).color
+                  }">${fact.category}
+                   </span>
                 </p>
                 <div class="vote-button">
-                  <button>👍</button>
-                  <button>🤯</button>
-                  <button>⛔️</button>
+                  <button>👍 ${fact.votesInteresting}</button>
+                  <button>🤯 ${fact.votesMindblowing}</button>
+                  <button>⛔️ ${fact.votesFalse}</button>
                 </div>
               </li>`
   );
@@ -86,7 +86,44 @@ function createFactsList(dataArray) {
   factsList.insertAdjacentHTML("afterbegin", html);
 }
 
-createFactsList(initialFacts);
+// createFactsList(initialFacts);
+
+//data from supabase
+// 有问题
+// async function loadFacts() {
+//   const res = await fetch(
+//     "https://ovffeggymtfzenbxybfn.supabase.co/rest/v1/facts",
+//     {
+//       headers: {
+//         apiKey:
+//           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im92ZmZlZ2d5bXRmemVuYnh5YmZuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU0NjM0OTgsImV4cCI6MjA1MTAzOTQ5OH0.5opGPFzIXN0GLMtxMYaTYVXL1pRP6p6e9oUFIMjd-A8",
+//         authorization:
+//           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im92ZmZlZ2d5bXRmemVuYnh5YmZuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU0NjM0OTgsImV4cCI6MjA1MTAzOTQ5OH0.5opGPFzIXN0GLMtxMYaTYVXL1pRP6p6e9oUFIMjd-A8",
+//       },
+//     }
+//   );
+//   const data = await res.json();
+// console.log(data);
+// }
+
+async function loadFacts() {
+  const res = await fetch(
+    "https://ovffeggymtfzenbxybfn.supabase.co/rest/v1/facts",
+    {
+      headers: {
+        apiKey:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im92ZmZlZ2d5bXRmemVuYnh5YmZuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU0NjM0OTgsImV4cCI6MjA1MTAzOTQ5OH0.5opGPFzIXN0GLMtxMYaTYVXL1pRP6p6e9oUFIMjd-A8",
+        authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im92ZmZlZ2d5bXRmemVuYnh5YmZuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU0NjM0OTgsImV4cCI6MjA1MTAzOTQ5OH0.5opGPFzIXN0GLMtxMYaTYVXL1pRP6p6e9oUFIMjd-A8",
+      },
+    }
+  );
+
+  const data = await res.json();
+  createFactsList(data);
+}
+
+loadFacts();
 
 // console.log(htmlArr);
 // const html = htmlArr.join("");
