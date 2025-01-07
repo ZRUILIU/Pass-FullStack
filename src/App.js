@@ -1,4 +1,4 @@
-import { isValidElement, useState } from "react";
+import { isValidElement, useEffect, useState } from "react";
 import "./style.css";
 import { useFormState } from "react-dom";
 import supabase from "./supabase";
@@ -56,6 +56,24 @@ function App() {
   const [showForm, setShowForm] = useState(false);
   const [facts, setFacts] = useState(initialFacts);
   const appTitle = "Today I Learned!";
+  const [isLoading, setIsLoding] = useState(false);
+
+  useEffect(function () {
+    async function getFacts() {
+      setIsLoding(true);
+
+      let { data: facts, error } = await supabase
+        .from("facts")
+        .select("*")
+        .order("votesInteresting", { ascending: false })
+        .limit(999);
+
+      if (!error) setFacts(facts);
+      else alert("DATABASE problem");
+      setIsLoding(false);
+    }
+    getFacts();
+  }, []);
 
   return (
     <>
@@ -70,10 +88,14 @@ function App() {
 
       <main className="main">
         <CategoryFilter />
-        <FactList facts={facts} />
+        {isLoading ? <Loader /> : <FactList facts={facts} />}
       </main>
     </>
   );
+}
+
+function Loader() {
+  return <p className="message">Loading...</p>;
 }
 
 function Header({ showForm, setShowForm, appTitle }) {
